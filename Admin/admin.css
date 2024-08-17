@@ -1,0 +1,47 @@
+.food-card {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.food-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.food-image {
+    height: 200px;
+    object-fit: cover;
+}
+
+.btn-edit, .btn-delete {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Dark mode styles */
+[data-bs-theme="dark"] {
+    --bs-body-color: #f8f9fa;
+    --bs-body-bg: #212529;
+}
+
+[data-bs-theme="dark"] .card {
+    background-color: #343a40;
+}
+
+[data-bs-theme="dark"] .modal-content {
+    background-color: #343a40;
+}
+
+/* Search input styles */
+#searchInput {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#searchButton {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.bg-primary {
+    --bs-bg-opacity: 1;
+    background-color: #212529 !important;
+}

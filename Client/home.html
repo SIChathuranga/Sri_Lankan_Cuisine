@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sri Lankan Cuisine</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header class="bg-dark text-white py-3">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#"><h1>Sri Lankan Cuisine</h1></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="review.html">Comment</a></li>
+                        <li class="nav-item">
+                            <button id="darkModeToggle" class="btn btn-outline-light">
+                                <i class="bi bi-moon-fill"></i> Dark Mode
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="./src/header1.jpeg" class="d-block w-100" alt="Sri Lankan Food 1">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./src/header2.jpeg" class="d-block w-100" alt="Sri Lankan Food 2">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./src/header3.jpeg" class="d-block w-100" alt="Sri Lankan Food 3">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./src/header4.jpeg" class="d-block w-100" alt="Sri Lankan Food 4">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./src/header5.jpeg" class="d-block w-100" alt="Sri Lankan Food 5">
+                    </div>
+                    <div class="carousel-item">
+                        <img src="./src/header6.jpeg" class="d-block w-100" alt="Sri Lankan Food 6">
+                    </div>
+                </div>
+                <div class="carousel-caption">
+                    <div class="welcome-message">
+                        <h2 class="animate-text">Welcome to Sri Lankan Cuisine</h2>
+                        <p class="animate-text">Embark on a culinary journey through the flavors of Sri Lanka. Our vibrant and diverse cuisine is a blend of rich spices, tropical ingredients, and traditional recipes passed down through generations.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="food-showcase" class="food-showcase container mt-5">
+            <div >
+                <h2 class="text-center mb-4">Explore Our Foods</h2>
+                
+                <div class="input-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search foods...">
+                        <button class="btn btn-outline-secondary" type="button" id="searchButton">
+                            <i class="bi bi-search"></i> Search
+                        </button>
+                </div>
+            </div>
+            <br>
+            <div id="food-cards-container" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                <!-- Cards will be dynamically inserted here -->
+            </div>
+            <nav aria-label="Food pagination" class="mt-4">
+                <ul id="pagination" class="pagination justify-content-center">
+                    <!-- Pagination will be dynamically inserted here -->
+                </ul>
+            </nav>
+        </section>
+    </main>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>Explore the rich and diverse flavors of Sri Lanka with our authentic recipes and cultural insights.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="about.html" class="text-white">About</a></li>
+                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white me-3">info.srilankancuisine@gmail.com</a>
+
+                </div>
+            </div>
+            <hr class="mt-4">
+            <div class="text-center">
+                <small>&copy; 2024 SriLankanCuisine.com. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="home.js"></script>
+</body>
+</html>

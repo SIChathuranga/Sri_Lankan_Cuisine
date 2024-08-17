@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and responsive design -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <!-- External CSS links for Bootstrap, Bootstrap Icons, and custom styles -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="review.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header section with navigation -->
+    <header class="bg-dark text-white py-3">
+        <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-dark">
+                <!-- Brand logo and mobile menu toggle -->
+                <a class="navbar-brand" href="#"><h1>Sri Lankan Cuisine</h1></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Navigation menu items -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Comment</a></li>
+                        <!-- Dark mode toggle button -->
+                        <li class="nav-item">
+                            <button id="darkModeToggle" class="btn btn-outline-light">
+                                <i class="bi bi-moon-fill"></i> Dark Mode
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main content area -->
+    <main role="main">
+        <div class="container">
+            <div class="be-comment-block">
+                
+
+                <!-- Comment submission form -->
+                <form id="commentForm" class="form-block">
+                    <h1 id="comments" class="comments-title">Add Your Comment</h1>
+                    <div class="row">
+                        <!-- Name input field -->
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group fl_icon">
+                                <div class="icon"><i class="bi bi-person-fill"></i> <label for="nameInput" class="form-label">Your Name</label></div>
+                                
+                                <input id="nameInput" class="form-input" type="text"  required>
+                            </div>
+                        </div>
+                        <!-- Email input field -->
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group fl_icon">
+                                <div class="icon"><i class="bi bi-envelope-fill"></i> <label for="nameInput" class="form-label">Your Email</label></div>
+                                <input id="emailInput" class="form-input" type="email"  required>
+                            </div>
+                        </div>
+                        
+                        <!-- Comment text area -->
+                        <div class="col-xs-12 mt-4">
+                            <div class="form-group"><label for="nameInput" class="form-label">Your comment</label>
+                                <textarea id="textInput" class="form-input" required ></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit button -->
+                        <button class="btn btn-primary pull-right mt-4">Submit</button>
+                        
+                    </div>
+                </form>
+                <br>
+                
+
+            </div>
+            <div class="overflow-auto">
+                <h1 id="comments" class="comments-title">Comments</h1>
+                <!-- Container for dynamically loaded comments -->
+                <div id="commentsContainer"></div>
+                </div>
+        </div>
+    </main>
+
+    <!-- Footer section -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- About Us column -->
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>Explore the rich and diverse flavors of Sri Lanka with our authentic recipes and cultural insights.</p>
+                </div>
+                <!-- Quick Links column -->
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-white">Home</a></li>
+                        <li><a href="about.html" class="text-white">About</a></li>
+                        <li><a href="contact.html" class="text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <!-- Social media links column -->
+                <div class="col-md-4">
+                    <h5>Connect With Us</h5>
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-envelope"></i></a>
+                </div>
+            </div>
+            <hr>
+            <!-- Copyright information -->
+            <div class="text-center">
+                <small>&copy; 2024 SriLankanCuisine.com. All rights reserved.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript files for Bootstrap and custom functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="review.js"></script>
+</body>
+</html>
+

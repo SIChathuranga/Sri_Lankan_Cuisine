@@ -1,0 +1,226 @@
+ General Styles
+ body {
+    margin-top: 20px;
+    background-color: #e9ebee;
+    color: #333;
+    transition: background-color 0.3s, color 0.3s;
+    font-family: 'Arial', sans-serif;
+}
+
+.dark-mode {
+    background-color: #2c2c2c;
+    color: #e9ebee;
+}
+
+
+header {
+    background-color: #343a40;
+}
+
+.navbar-brand h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+    
+}
+
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #ffffff;
+    transition: color 0.3s;
+}
+
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: #d3d3d3;
+}
+
+.be-comment-block {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    border: 1px solid #edeff2;
+    border-radius: 8px;
+    padding: 30px;
+    background-color: #f6f6f7;
+    transition: background-color 0.3s;
+}
+
+.dark-mode .be-comment-block {
+    background-color: #3a3a3a;
+    border-color: #555;
+}
+
+.comments-title {
+    font-size: 24px;
+    color: #262626;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+}
+
+.dark-mode .comments-title {
+    color: #e9ebee;
+}
+
+.be-img-comment {
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-right: 15px;
+}
+
+.be-ava-comment {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.be-comment-content {
+    margin-left: 80px;
+    position: relative;
+}
+
+.be-comment-name {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.be-comment-content a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.dark-mode .be-comment-content a {
+    color: #90caf9;
+}
+
+.be-comment-time {
+    font-size: 12px;
+    color: #6c757d;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.dark-mode .be-comment-time {
+    color: #a5a5a5;
+}
+
+.be-comment-text {
+    font-size: 14px;
+    line-height: 20px;
+    color: #7a8192;
+    display: block;
+    background: #f6f6f7;
+    border: 1px solid #edeff2;
+    padding: 15px 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.dark-mode .be-comment-text {
+    background: #555;
+    border-color: #666;
+    color: #e9ebee;
+}
+
+
+
+.form-group .form-input {
+    font-size: 14px;
+    line-height: 48px;
+    font-weight: 400;
+    color: #495057;
+    width: 100%;
+    height: 48px;
+    padding-left: 70px;
+    padding-right: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 3px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.dark-mode .form-group .form-input {
+    background-color: #666;
+    color: #e9ebee;
+    border-color: #888;
+}
+
+.form-group textarea.form-input {
+    height: 150px;
+}
+
+.btn-edit, .btn-delete {
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+.btn-edit {
+    color: #007bff;
+    transition: color 0.3s;
+}
+
+.dark-mode .btn-edit {
+    color: #90caf9;
+}
+
+.btn-delete {
+    color: #dc3545;
+    transition: color 0.3s;
+}
+
+.dark-mode .btn-delete {
+    color: #f28b82;
+}
+
+.btn-outline-light {
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+ 
+
+ /* ------------------------new----------------------------------------- */
+
+ :root {
+    --custom-color: #2e3440;
+    --light-text: #f8f9fa;
+    --dark-text: #212529;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+}
+
+/* Header Styles */
+.navbar-brand h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+/* Footer Styles */
+footer {
+    background-color: var(--custom-color);
+}
+
+footer a:hover {
+    color: #ddd !important;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: var(--dark-text);
+    color: var(--light-text);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    .navbar-brand h1 {
+        font-size: 1.2rem;
+    }
+
+    #darkModeToggle {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
