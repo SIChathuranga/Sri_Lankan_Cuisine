@@ -6,7 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
-    
+    const logoutBtn = document.getElementById('logoutBtn');
+    const logoutMessage = document.getElementById('logoutMessage');
+
     const itemsPerPage = 12;
     let currentPage = 1;
     let foods = [];
@@ -218,4 +220,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     fetchFoods();
+
+
+
+    logoutBtn.addEventListener('click', function() {
+        fetch('http://localhost:5000/admin/logout', {
+            method: 'POST',
+            credentials: 'include', // Include credentials (cookies) with the request
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Logout failed: ' + response.statusText);
+            }
+        })
+        .then(data => {
+            if (data.message === "Logout successful") {
+                window.location.href = '/admin/login'; // Ensure this URL is correct
+            } else {
+                throw new Error('Unexpected response: ' + JSON.stringify(data));
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            if (logoutMessage) {
+                logoutMessage.textContent = 'An error occurred during logout: ' + error.message;
+            }
+        });
+    });
+    
+
+
+    
 });

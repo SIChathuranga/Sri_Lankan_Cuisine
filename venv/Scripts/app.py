@@ -1,17 +1,33 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, redirect, url_for, session, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from datetime import datetime
+from functools import wraps
+import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
+
+from flask import Flask, send_from_directory
+
+
 
 app = Flask(__name__)
 CORS(app)
+
+# Configure CORS with support for credentials
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
+
+# Configure secret key for sessions
+app.config['SECRET_KEY'] = 'your_secret_key_here'
 
 # Configure the SQLite database
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///foods.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# Define the Food model
+# Define the User model for admin login
+
+
+# Define the Food and Comment models
 class Food(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
@@ -19,7 +35,6 @@ class Food(db.Model):
     image_url = db.Column(db.String(200), nullable=False)
     comments = db.relationship('Comment', backref='food', cascade="all, delete-orphan", lazy=True)
 
-# Define the Comment model
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
@@ -31,6 +46,121 @@ class Comment(db.Model):
 # Create the database and tables
 with app.app_context():
     db.create_all()
+
+# Define the admin login route
+def get_db_connection():
+    conn = sqlite3.connect('admin.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def init_db():
+    conn = get_db_connection()
+    conn.execute('''CREATE TABLE IF NOT EXISTS admin_users
+                    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+                     username TEXT UNIQUE NOT NULL,
+                     password TEXT NOT NULL)''')
+    
+
+    # Check if the preset admin user already exists
+    cursor = conn.execute('SELECT * FROM admin_users WHERE username = ?', ('admin',))
+    if cursor.fetchone() is None:
+        # Insert preset admin user
+        preset_username = 'admin'
+        preset_password = 'password123'  # Replace with your desired password
+        hashed_password = generate_password_hash(preset_password)
+        conn.execute('INSERT INTO admin_users (username, password) VALUES (?, ?)',
+                     (preset_username, hashed_password))
+
+    conn.commit()
+    conn.close()
+
+
+init_db()
+
+@app.route('/admin/create_user', methods=['POST'])
+def create_user():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+    
+    if not username or not password:
+        return jsonify({"error": "Username and password are required"}), 400
+
+    conn = get_db_connection()
+    
+    # Check if the username already exists
+    if conn.execute('SELECT * FROM admin_users WHERE username = ?', (username,)).fetchone():
+        conn.close()
+        return jsonify({"error": "Username already exists"}), 400
+    
+    # Hash the password
+    hashed_password = generate_password_hash(password)
+    
+    # Insert the new user
+    try:
+        conn.execute('INSERT INTO admin_users (username, password) VALUES (?, ?)', 
+                     (username, hashed_password))
+        conn.commit()
+    except Exception as e:
+        conn.close()
+        return jsonify({"error": str(e)}), 500
+    
+    conn.close()
+    return jsonify({"message": "User created successfully"}), 201
+
+
+
+
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if 'user_id' not in session:
+            return jsonify({"error": "Unauthorized"}), 401
+        return f(*args, **kwargs)
+    return decorated_function
+
+@app.route('/admin/login', methods=['POST'])
+def login():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+    
+    conn = get_db_connection()
+    user = conn.execute('SELECT * FROM admin_users WHERE username = ?', (username,)).fetchone()
+    conn.close()
+    
+    if user and check_password_hash(user['password'], password):
+        session['user_id'] = user['id']
+        return jsonify({"message": "Login successful"}), 200
+    else:
+        return jsonify({"error": "Invalid credentials"}), 401
+
+
+    
+    # conn = get_db_connection()
+    # user = conn.execute('SELECT * FROM admin_users WHERE username = ?', (username,)).fetchone()
+    # conn.close()
+    
+    # if user and check_password_hash(user['password'], password):
+    #     session['user_id'] = user['id']
+    #     return jsonify({"message": "Login successful"}), 200
+    # else:
+    #     return jsonify({"error": "Invalid credentials"}), 401
+
+
+@app.route('/logout', methods=['POST'])
+def logout():
+    # Your logout logic here
+    return jsonify({"message": "Logged out successfully"}), 200
+
+
+@app.route('/admin/check_auth', methods=['GET'])
+def check_auth():
+    if 'user_id' in session:
+        return jsonify({"authenticated": True}), 200
+    else:
+        return jsonify({"authenticated": False}), 200
 
 # Food endpoints
 @app.route('/foods', methods=['GET'])
@@ -124,89 +254,6 @@ def delete_comment(food_id, comment_id):
     db.session.delete(comment)
     db.session.commit()
     return jsonify({'message': 'Comment deleted successfully'})
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
-
-# ---------------------coment section -----------------------------------
-
-app = Flask(__name__, static_folder='static')
-CORS(app)
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///comments.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-class Comment(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(80), nullable=False)
-    email = db.Column(db.String(120), nullable=False)
-    text = db.Column(db.Text, nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
-
-with app.app_context():
-    db.create_all()
-
-@app.route('/')
-def index():
-    return send_from_directory(app.static_folder, 'index.html')
-
-# Admin-only routes
-@app.route('/admin/comments', methods=['GET'])
-def get_comments():
-    comments = Comment.query.order_by(Comment.timestamp.desc()).all()
-    return jsonify([
-        {
-            'id': comment.id,
-            'name': comment.name,
-            'email': comment.email,
-            'text': comment.text,
-            'timestamp': comment.timestamp.isoformat()
-        } for comment in comments
-    ])
-
-@app.route('/comments', methods=['POST'])
-def add_comment():
-    data = request.json
-    new_comment = Comment(
-        name=data['name'],
-        email=data['email'],
-        text=data['text']
-    )
-    db.session.add(new_comment)
-    db.session.commit()
-    return jsonify({
-        'id': new_comment.id,
-        'name': new_comment.name,
-        'email': new_comment.email,
-        'text': new_comment.text,
-        'timestamp': new_comment.timestamp.isoformat()
-    }), 201
-
-@app.route('/admin/comments/<int:comment_id>', methods=['PUT'])
-def update_comment(comment_id):
-    comment = Comment.query.get_or_404(comment_id)
-    data = request.json
-    comment.name = data['name']
-    comment.email = data['email']
-    comment.text = data['text']
-    db.session.commit()
-    return jsonify({
-        'id': comment.id,
-        'name': comment.name,
-        'email': comment.email,
-        'text': comment.text,
-        'timestamp': comment.timestamp.isoformat()
-    })
-
-@app.route('/admin/comments/<int:comment_id>', methods=['DELETE'])
-def delete_comment(comment_id):
-    comment = Comment.query.get_or_404(comment_id)
-    db.session.delete(comment)
-    db.session.commit()
-    return jsonify({'message': 'Comment deleted successfully'}), 200
 
 if __name__ == '__main__':
     app.run(debug=True)
