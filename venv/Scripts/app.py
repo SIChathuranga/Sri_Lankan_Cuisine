@@ -11,7 +11,7 @@ from flask import Flask, send_from_directory
 
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True)
 
 # Configure CORS with support for credentials
 CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
@@ -149,10 +149,11 @@ def login():
     #     return jsonify({"error": "Invalid credentials"}), 401
 
 
-@app.route('/logout', methods=['POST'])
-def logout():
-    # Your logout logic here
+@app.route('/admin/logout', methods=['POST'])
+def admin_logout():
+    session.pop('user_id', None)
     return jsonify({"message": "Logged out successfully"}), 200
+
 
 
 @app.route('/admin/check_auth', methods=['GET'])

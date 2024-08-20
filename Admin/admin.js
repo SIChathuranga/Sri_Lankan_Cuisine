@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
-    const logoutBtn = document.getElementById('logoutBtn');
+    const logoutBtn = document.getElementById('logoutButton');
     const logoutMessage = document.getElementById('logoutMessage');
+    const logoutButton = document.getElementById('logoutButton');
 
     const itemsPerPage = 12;
     let currentPage = 1;
@@ -223,34 +224,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-    logoutBtn.addEventListener('click', function() {
-        fetch('http://localhost:5000/admin/logout', {
-            method: 'POST',
-            credentials: 'include', // Include credentials (cookies) with the request
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Logout failed: ' + response.statusText);
+    // logoutBtn.addEventListener('click', function() {
+    //     fetch('http://localhost:5000/admin/logout', {
+    //         method: 'POST',
+    //         credentials: 'include', // Include credentials (cookies) with the request
+    //     })
+    //     .then(response => {
+    //         if (response.ok) {
+    //             return response.json();
+    //         } else {
+    //             throw new Error('Logout failed: ' + response.statusText);
+    //         }
+    //     })
+    //     .then(data => {
+    //         if (data.message === "Logout successful") {
+    //             window.location.href = '/admin/login'; // Ensure this URL is correct
+    //         } else {
+    //             throw new Error('Unexpected response: ' + JSON.stringify(data));
+    //         }
+    //     })
+    //     .catch((error) => {
+    //         console.error('Error:', error);
+    //         if (logoutMessage) {
+    //             logoutMessage.textContent = 'An error occurred during logout: ' + error.message;
+    //         }
+    //     });
+    // });
+    
+
+    document.getElementById('logoutButton').addEventListener('click', async () => {
+        try {
+            const response = await fetch('http://localhost:5000/admin/logout', {
+                method: 'POST',
+                credentials: 'include' // This is necessary to include cookies in the request
+            });
+    
+            if (!response.ok) {
+                throw new Error('Logout failed');
             }
-        })
-        .then(data => {
-            if (data.message === "Logout successful") {
-                window.location.href = '/admin/login'; // Ensure this URL is correct
-            } else {
-                throw new Error('Unexpected response: ' + JSON.stringify(data));
-            }
-        })
-        .catch((error) => {
+    
+            const result = await response.json();
+            console.log(result.message); // Logged out successfully
+            // Redirect or update UI after logout
+        } catch (error) {
             console.error('Error:', error);
-            if (logoutMessage) {
-                logoutMessage.textContent = 'An error occurred during logout: ' + error.message;
-            }
-        });
+        }
     });
     
-
-
-    
 });
+
+

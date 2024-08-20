@@ -12,18 +12,20 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Sri Lankan Cuisine Admin Panel</a>
+            <div>
             <button id="darkModeToggle" class="btn btn-outline-light">
                 <i class="bi bi-moon"></i> Dark Mode
             </button>
-            
+            <button id="logoutBtn" class="btn btn-danger">Logout</button>
+            </div>
         </div>
-        <button id="logoutBtn" class="btn btn-danger">Logout</button>
-        <div id="logoutMessage" class="alert alert-danger" role="alert"></div>
-
+        
+        
     </nav>
 
     <div class="container mt-4">
         <h2>Manage Food Articles</h2>
+        <div id="logoutMessage" class="alert alert-danger" role="alert"></div>
         <div class="row mb-3">
             <div class="col-md-6">
                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#foodModal">
