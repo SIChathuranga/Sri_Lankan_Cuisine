@@ -109,7 +109,44 @@ def create_user():
     return jsonify({"message": "User created successfully"}), 201
 
 
+@app.route('/admin/update_user/<username>', methods=['PUT'])
+def update_user(username):
+    data = request.json
+    new_username = data.get('new_username')
+    new_password = data.get('new_password')
+    
+    conn = get_db_connection()
+    
+    # Check if the user exists
+    user = conn.execute('SELECT * FROM admin_users WHERE username = ?', (username,)).fetchone()
+    if not user:
+        conn.close()
+        return jsonify({"error": "User not found"}), 404
 
+    # Update username and/or password
+    try:
+        if new_username:
+            # Check if the new username already exists
+            if conn.execute('SELECT * FROM admin_users WHERE username = ?', (new_username,)).fetchone():
+                conn.close()
+                return jsonify({"error": "New username already exists"}), 400
+            
+            conn.execute('UPDATE admin_users SET username = ? WHERE username = ?', 
+                         (new_username, username))
+        
+        if new_password:
+            # Hash the new password
+            hashed_password = generate_password_hash(new_password)
+            conn.execute('UPDATE admin_users SET password = ? WHERE username = ?', 
+                         (hashed_password, username))
+
+        conn.commit()
+    except Exception as e:
+        conn.close()
+        return jsonify({"error": str(e)}), 500
+    
+    conn.close()
+    return jsonify({"message": "User updated successfully"}), 200
 
 
 def login_required(f):
@@ -138,15 +175,7 @@ def login():
 
 
     
-    # conn = get_db_connection()
-    # user = conn.execute('SELECT * FROM admin_users WHERE username = ?', (username,)).fetchone()
-    # conn.close()
     
-    # if user and check_password_hash(user['password'], password):
-    #     session['user_id'] = user['id']
-    #     return jsonify({"message": "Login successful"}), 200
-    # else:
-    #     return jsonify({"error": "Invalid credentials"}), 401
 
 
 @app.route('/admin/logout', methods=['POST'])

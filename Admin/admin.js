@@ -6,9 +6,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const darkModeToggle = document.getElementById('darkModeToggle');
     const searchInput = document.getElementById('searchInput');
     const searchButton = document.getElementById('searchButton');
-    const logoutBtn = document.getElementById('logoutButton');
+    const logoutButton = document.getElementById('logoutBtn');
     const logoutMessage = document.getElementById('logoutMessage');
-    const logoutButton = document.getElementById('logoutButton');
 
     const itemsPerPage = 12;
     let currentPage = 1;
@@ -222,55 +221,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
     fetchFoods();
 
+    // Logout button event listener with null check
+    if (logoutButton) {
+        logoutButton.addEventListener('click', async () => {
+            try {
+                const response = await fetch('http://localhost:5000/admin/logout', {
+                    method: 'POST',
+                    credentials: 'include' // This is necessary to include cookies in the request
+                });
 
+                if (!response.ok) {
+                    throw new Error('Logout failed');
+                }
 
-    // logoutBtn.addEventListener('click', function() {
-    //     fetch('http://localhost:5000/admin/logout', {
-    //         method: 'POST',
-    //         credentials: 'include', // Include credentials (cookies) with the request
-    //     })
-    //     .then(response => {
-    //         if (response.ok) {
-    //             return response.json();
-    //         } else {
-    //             throw new Error('Logout failed: ' + response.statusText);
-    //         }
-    //     })
-    //     .then(data => {
-    //         if (data.message === "Logout successful") {
-    //             window.location.href = '/admin/login'; // Ensure this URL is correct
-    //         } else {
-    //             throw new Error('Unexpected response: ' + JSON.stringify(data));
-    //         }
-    //     })
-    //     .catch((error) => {
-    //         console.error('Error:', error);
-    //         if (logoutMessage) {
-    //             logoutMessage.textContent = 'An error occurred during logout: ' + error.message;
-    //         }
-    //     });
-    // });
-    
+                const result = await response.json();
+                console.log(result.message); // Logged out successfully
+                
+                // Display a logout message
+                if (logoutMessage) {
+                    logoutMessage.textContent = 'Logged out successfully. Redirecting to login page...';
+                }
 
-    document.getElementById('logoutButton').addEventListener('click', async () => {
-        try {
-            const response = await fetch('http://localhost:5000/admin/logout', {
-                method: 'POST',
-                credentials: 'include' // This is necessary to include cookies in the request
-            });
-    
-            if (!response.ok) {
-                throw new Error('Logout failed');
+                // Wait for a moment to display the message before redirecting
+                setTimeout(() => {
+                    window.location.href = '/admin/login.html'; // Navigate to the login page
+                }, 1000); // 2 seconds delay
+
+            } catch (error) {
+                console.error('Error:', error);
+                if (logoutMessage) {
+                    logoutMessage.textContent = 'An error occurred during logout: ' + error.message;
+                }
             }
-    
-            const result = await response.json();
-            console.log(result.message); // Logged out successfully
-            // Redirect or update UI after logout
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    });
-    
+        });
+    } else {
+        console.error('Logout button not found.');
+    }
 });
-
-
