@@ -21,8 +21,16 @@
             "destination": "/Admin/login.html"
         },
         {
+            "source": "/admin/login",
+            "destination": "/Admin/login.html"
+        },
+        {
             "source": "/admin/dashboard",
             "destination": "/Admin/admin.html"
+        },
+        {
+            "source": "/admin/reviews",
+            "destination": "/Admin/admin-review.html"
         }
     ],
     "headers": [

@@ -1,9 +1,24 @@
 // API Configuration
+// ==========================================
+// IMPORTANT: Before deploying to Vercel, update the PRODUCTION_API_URL
+// with your actual Render backend URL (e.g., https://your-app-name.onrender.com/api)
+// ==========================================
+
+const PRODUCTION_API_URL = 'https://your-backend-app.onrender.com/api'; // <-- UPDATE THIS!
+
 const API_CONFIG = {
-    // Change this to your Render backend URL when deployed
-    BASE_URL: window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-        ? 'http://localhost:5000/api'
-        : 'https://your-backend-app.onrender.com/api',
+    // Automatically detect environment and use appropriate URL
+    BASE_URL: (function () {
+        const hostname = window.location.hostname;
+
+        // Local development
+        if (hostname === 'localhost' || hostname === '127.0.0.1') {
+            return 'http://localhost:5000/api';
+        }
+
+        // Production (Vercel or any other hosting)
+        return PRODUCTION_API_URL;
+    })(),
 
     ENDPOINTS: {
         // Foods
@@ -28,6 +43,11 @@ const API_CONFIG = {
         UPLOAD_IMAGE: '/upload/image'
     }
 };
+
+// Log the API URL in development for debugging
+if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+    console.log('API Base URL:', API_CONFIG.BASE_URL);
+}
 
 // Export for use in other files
 if (typeof module !== 'undefined' && module.exports) {

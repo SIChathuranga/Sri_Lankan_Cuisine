@@ -37,8 +37,7 @@
     <header>
         <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
             <div class="container">
-                <a class="navbar-brand fw-bold text-gradient fs-3" href="#"
-                    style="font-family: 'Playfair Display', serif;">
+                <a class="navbar-brand fw-bold text-gradient fs-3 navbar-brand-style" href="home.html">
                     Sri Lankan Cuisine
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -46,13 +45,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto align-items-center gap-3">
-                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="home.html">Home</a>
+                        </li>
                         <li class="nav-item"><a class="nav-link" href="review.html">Reviews</a></li>
                         <li class="nav-item"><a class="nav-link" href="contactus.html">Contact</a></li>
                         <li class="nav-item">
-                            <button id="darkModeToggle"
-                                class="btn btn-theme-toggle rounded-circle d-flex align-items-center justify-content-center"
-                                style="width: 40px; height: 40px;">
+                            <button id="darkModeToggle" class="btn btn-theme-toggle rounded-circle social-icon-btn"
+                                title="Toggle dark mode">
                                 <i class="bi bi-moon-fill"></i>
                             </button>
                         </li>
@@ -85,11 +84,10 @@
             </div>
 
             <!-- Centered Overlay Content -->
-            <div class="hero-overlay animate-on-scroll">
-                <h1 class="hero-title text-white mb-3" style="font-family: 'Playfair Display', serif;">Taste of Paradise
-                </h1>
-                <p class="hero-text text-white mb-4">Explore the vibrant flavors, rich spices, and culinary heritage of
-                    Sri Lanka.</p>
+            <div class="hero-overlay">
+                <h1 class="hero-title text-white">Taste of Paradise</h1>
+                <p class="hero-text text-white">Explore the vibrant flavors, rich spices, and culinary heritage of Sri
+                    Lanka.</p>
                 <a href="#food-showcase"
                     class="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-lg fw-bold text-uppercase tracking-wider">
                     Discover Recipes
@@ -113,12 +111,9 @@
     <main class="container">
 
         <!-- Search Bar (Floating) -->
-        <!-- Removed duplicate margin logic. CSS handles the floating. -->
-        <div class="search-container shadow-lg p-1 rounded-pill">
-            <i class="bi bi-search search-icon ms-3 text-primary"></i>
-            <input type="text" id="searchInput"
-                class="form-control border-0 shadow-none bg-transparent ps-5 py-3 rounded-pill"
-                placeholder="Search for recipes, ingredients...">
+        <div class="search-container">
+            <i class="bi bi-search search-icon"></i>
+            <input type="text" id="searchInput" class="form-control" placeholder="Search for recipes, ingredients...">
         </div>
 
         <!-- Food Showcase -->
@@ -214,43 +209,40 @@
                     <p class="text-secondary lh-lg mb-4">Preserving and sharing the authentic culinary traditions of Sri
                         Lanka with the world. Join our journey of flavors.</p>
                     <div class="d-flex gap-3 social-links">
-                        <a href="#"
-                            class="btn btn-outline-secondary rounded-circle btn-sm d-flex align-items-center justify-content-center"
-                            style="width: 40px; height: 40px;"><i class="bi bi-facebook"></i></a>
-                        <a href="#"
-                            class="btn btn-outline-secondary rounded-circle btn-sm d-flex align-items-center justify-content-center"
-                            style="width: 40px; height: 40px;"><i class="bi bi-instagram"></i></a>
-                        <a href="#"
-                            class="btn btn-outline-secondary rounded-circle btn-sm d-flex align-items-center justify-content-center"
-                            style="width: 40px; height: 40px;"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#"
-                            class="btn btn-outline-secondary rounded-circle btn-sm d-flex align-items-center justify-content-center"
-                            style="width: 40px; height: 40px;"><i class="bi bi-youtube"></i></a>
+                        <a href="#" aria-label="Facebook"
+                            class="btn btn-outline-secondary rounded-circle btn-sm social-icon-btn"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"
+                            class="btn btn-outline-secondary rounded-circle btn-sm social-icon-btn"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"
+                            class="btn btn-outline-secondary rounded-circle btn-sm social-icon-btn"><i
+                                class="bi bi-twitter-x"></i></a>
+                        <a href="#" aria-label="YouTube"
+                            class="btn btn-outline-secondary rounded-circle btn-sm social-icon-btn"><i
+                                class="bi bi-youtube"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6">
-                    <h6 class="fw-bold mb-4 text-primary text-uppercase tracking-wider small">Explore</h6>
+                    <h6 class="fw-bold mb-4 text-accent text-uppercase tracking-wider small">Explore</h6>
                     <ul class="list-unstyled d-flex flex-column gap-2">
-                        <li><a href="#"
-                                class="text-muted text-decoration-none hover-text-primary transition-colors">Home</a>
+                        <li><a href="home.html" class="text-decoration-none transition-colors">Home</a>
                         </li>
-                        <li><a href="review.html"
-                                class="text-muted text-decoration-none hover-text-primary transition-colors">Reviews</a>
+                        <li><a href="review.html" class="text-decoration-none transition-colors">Reviews</a>
                         </li>
-                        <li><a href="contactus.html"
-                                class="text-muted text-decoration-none hover-text-primary transition-colors">Contact</a>
+                        <li><a href="contactus.html" class="text-decoration-none transition-colors">Contact</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
-                    <h6 class="fw-bold mb-4 text-primary text-uppercase tracking-wider small">Contact Us</h6>
+                    <h6 class="fw-bold mb-4 text-accent text-uppercase tracking-wider small">Contact Us</h6>
                     <ul class="list-unstyled text-muted d-flex flex-column gap-3">
                         <li class="d-flex align-items-start gap-3">
-                            <i class="bi bi-envelope text-primary mt-1"></i>
+                            <i class="bi bi-envelope text-accent mt-1"></i>
                             <span>info@srilankancuisine.com</span>
                         </li>
                         <li class="d-flex align-items-start gap-3">
-                            <i class="bi bi-geo-alt text-primary mt-1"></i>
+                            <i class="bi bi-geo-alt text-accent mt-1"></i>
                             <span>123 Spice Garden Rd,<br>Colombo 07, Sri Lanka</span>
                         </li>
                     </ul>
@@ -260,8 +252,7 @@
             <div
                 class="border-top border-secondary border-opacity-25 mt-5 pt-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
                 <small class="text-muted">&copy; 2024 Sri Lankan Cuisine. All rights reserved.</small>
-                <a href="../Admin/login.html"
-                    class="text-muted small text-decoration-none hover-text-primary transition-colors">
+                <a href="../Admin/login.html" class="small text-decoration-none text-accent transition-colors">
                     <i class="bi bi-shield-lock me-1"></i> Admin Login
                 </a>
             </div>

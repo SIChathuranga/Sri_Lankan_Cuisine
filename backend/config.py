@@ -24,8 +24,10 @@ class Config:
     CLOUDINARY_API_KEY = os.getenv('CLOUDINARY_API_KEY')
     CLOUDINARY_API_SECRET = os.getenv('CLOUDINARY_API_SECRET')
     
-    # CORS
-    ALLOWED_ORIGINS = os.getenv('ALLOWED_ORIGINS', 'http://localhost:8000').split(',')
+    # CORS - Multiple origins supported, comma-separated
+    # Set ALLOWED_ORIGINS in your .env file to include your Vercel URL
+    # Example: ALLOWED_ORIGINS=http://localhost:8000,http://127.0.0.1:8000,https://your-app.vercel.app
+    ALLOWED_ORIGINS = [origin.strip() for origin in os.getenv('ALLOWED_ORIGINS', 'http://localhost:8000,http://127.0.0.1:8000,http://localhost:5500,http://127.0.0.1:5500').split(',')]
     
     # Admin
     ADMIN_USERNAME = os.getenv('ADMIN_USERNAME', 'admin')

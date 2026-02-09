@@ -11,6 +11,7 @@
     --bg-tertiary: #eef2f6;
     --bg-card: #ffffff;
     --bg-overlay: rgba(255, 255, 255, 0.90);
+    --bg-footer: #1a1c20;
 
     --text-primary: #1a1c20;
     --text-secondary: #4a5568;
@@ -23,6 +24,12 @@
     /* Vibrant Orange */
     --accent-hover: #e85d2a;
     --accent-light: #fff0eb;
+
+    /* Status Colors */
+    --success: #10b981;
+    --danger: #ef4444;
+    --info: #3b82f6;
+    --warning: #f59e0b;
 
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
@@ -39,6 +46,7 @@
     /* Slate 700 */
     --bg-card: #1e293b;
     --bg-overlay: rgba(15, 23, 42, 0.90);
+    --bg-footer: #0f172a;
 
     --text-primary: #f8fafc;
     --text-secondary: #cbd5e1;
@@ -50,6 +58,12 @@
     --accent-primary: #ff8c5a;
     /* Softer Orange for Dark Mode */
     --accent-hover: #ff6b35;
+
+    /* Status Colors (same for dark mode) */
+    --success: #10b981;
+    --danger: #ef4444;
+    --info: #3b82f6;
+    --warning: #f59e0b;
 
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
     --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
@@ -66,24 +80,46 @@ body {
 
 /* ========== NAVBAR ========== */
 .navbar {
-    background-color: var(--bg-overlay) !important;
+    background-color: var(--bg-footer) !important;
     -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
+    padding: 0.75rem 0;
 }
 
 .navbar-brand {
-    color: var(--text-primary) !important;
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+    background: none !important;
 }
 
 .nav-link {
-    color: var(--text-secondary) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
     font-weight: 500;
 }
 
 .nav-link:hover,
 .nav-link.active {
+    color: var(--accent-primary) !important;
+}
+
+/* Dark mode navbar adjustments */
+[data-theme="dark"] .navbar {
+    background-color: var(--bg-secondary) !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="dark"] .navbar-brand {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .nav-link {
+    color: var(--text-secondary) !important;
+}
+
+[data-theme="dark"] .nav-link:hover,
+[data-theme="dark"] .nav-link.active {
     color: var(--accent-primary) !important;
 }
 
@@ -100,13 +136,60 @@ body {
 .form-control,
 .search-input,
 .comment-form-control {
-    background-color: var(--bg-primary) !important;
+    background-color: var(--bg-secondary) !important;
     border: 1px solid var(--border-color) !important;
     color: var(--text-primary) !important;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus,
+.search-input:focus {
+    background-color: var(--bg-primary) !important;
+    border-color: var(--accent-primary) !important;
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15) !important;
 }
 
 .form-control::placeholder {
-    color: var(--text-muted);
+    color: var(--text-muted) !important;
+    opacity: 1;
+}
+
+/* Fix floating labels overlap issue: Placeholder must be transparent initially */
+.form-floating .form-control::placeholder {
+    color: transparent !important;
+}
+
+/* Show placeholder only on focus for floating labels */
+.form-floating .form-control:focus::placeholder {
+    color: var(--text-muted) !important;
+    opacity: 0.7;
+}
+
+/* Dark mode specific form fixes */
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-floating .form-control,
+[data-theme="dark"] textarea.form-control {
+    background-color: var(--bg-tertiary) !important;
+    border-color: var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-theme="dark"] .form-control:focus {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--accent-primary) !important;
+}
+
+[data-theme="dark"] .form-control::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* Form floating labels in dark mode */
+[data-theme="dark"] .form-floating>label {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .form-floating>.form-control:focus~label {
+    color: var(--accent-primary);
 }
 
 /* ========== BUTTONS ========== */
@@ -134,9 +217,9 @@ body {
 
 /* Theme Toggle Button */
 .btn-theme-toggle {
-    background-color: transparent;
-    border: none;
-    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #ffffff;
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
@@ -144,8 +227,138 @@ body {
 }
 
 .btn-theme-toggle:hover {
-    background-color: var(--bg-tertiary);
-    color: var(--accent-primary);
+    background-color: var(--accent-primary);
     border-color: var(--accent-primary);
+    color: #ffffff;
     transform: rotate(15deg);
+}
+
+/* Dark mode toggle adjustments */
+[data-theme="dark"] .btn-theme-toggle {
+    background-color: var(--bg-tertiary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .btn-theme-toggle:hover {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: #ffffff;
+}
+
+/* ========== FOOTER ========== */
+footer {
+    background-color: var(--bg-footer);
+    color: var(--text-inverse);
+    border-top: 1px solid var(--border-color);
+}
+
+footer h4,
+footer h5,
+footer h6 {
+    color: var(--text-inverse);
+}
+
+/* Footer section headers - use orange accent */
+footer .text-primary {
+    color: var(--accent-primary) !important;
+}
+
+/* Text accent utility class */
+.text-accent {
+    color: var(--accent-primary) !important;
+}
+
+/* Footer title with Playfair Display */
+footer .footer-title,
+footer h4.text-gradient,
+.font-playfair {
+    font-family: 'Playfair Display', serif;
+}
+
+footer p,
+footer small,
+footer .text-muted,
+footer .text-secondary {
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    color: var(--accent-primary);
+}
+
+footer .social-links a {
+    border-color: rgba(255, 255, 255, 0.3) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+footer .social-links a:hover {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary) !important;
+    color: white !important;
+}
+
+/* ========== SECTIONS ========== */
+.bg-light {
+    background-color: var(--bg-secondary) !important;
+}
+
+.bg-card {
+    background-color: var(--bg-card);
+}
+
+/* Comment Section Wrapper */
+.comment-section-wrapper {
+    background-color: var(--bg-secondary) !important;
+}
+
+.comment-section-wrapper .comment-card {
+    background-color: var(--bg-card);
+}
+
+/* Form Floating Labels */
+.form-floating>label {
+    color: var(--text-muted);
+}
+
+.form-floating>.form-control:focus~label {
+    color: var(--accent-primary);
+}
+
+/* ========== MOBILE NAVBAR TOGGLER ========== */
+.navbar-toggler {
+    border-color: var(--border-color);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(100, 100, 100, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(200, 200, 200, 0.85)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* ========== SOCIAL ICON BUTTONS ========== */
+.social-icon-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* ========== NAVBAR BRAND STYLE ========== */
+.navbar-brand-style {
+    font-family: 'Playfair Display', serif;
+}
+
+/* ========== THEME TOGGLE ICON ONLY ========== */
+.btn-theme-toggle.rounded-circle {
+    padding: 0;
 }

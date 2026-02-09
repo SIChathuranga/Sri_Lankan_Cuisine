@@ -31,22 +31,24 @@
 
     <!-- Navigation -->
     <header>
-        <nav class="navbar navbar-expand-lg fixed-top">
+        <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
             <div class="container">
-                <a class="navbar-brand fw-bold text-gradient" href="home.html">
-                    <i class="bi bi-egg-fried me-2"></i>Sri Lankan Cuisine
+                <a class="navbar-brand fw-bold text-gradient fs-3 navbar-brand-style" href="home.html">
+                    Sri Lankan Cuisine
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto align-items-center">
+                    <ul class="navbar-nav ms-auto align-items-center gap-3">
                         <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link active" href="#">Reviews</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                href="review.html">Reviews</a></li>
                         <li class="nav-item"><a class="nav-link" href="contactus.html">Contact</a></li>
-                        <li class="nav-item ms-lg-3">
-                            <button id="darkModeToggle" class="btn btn-theme-toggle btn-sm rounded-pill">
-                                <i class="bi bi-moon-fill"></i> Dark Mode
+                        <li class="nav-item">
+                            <button id="darkModeToggle" class="btn btn-theme-toggle rounded-circle social-icon-btn"
+                                title="Toggle dark mode">
+                                <i class="bi bi-moon-fill"></i>
                             </button>
                         </li>
                     </ul>
@@ -96,17 +98,59 @@
 
     <!-- Footer -->
     <footer class="py-5 mt-auto">
-        <div class="container">
-            <div class="text-center">
-                <h5 class="text-gradient mb-3">Sri Lankan Cuisine</h5>
-                <p class="text-muted small mb-4">Preserving culinary traditions.</p>
-                <div class="d-flex justify-content-center gap-3 mb-4">
-                    <a href="#" class="fs-5"><i class="bi bi-facebook"></i></a>
-                    <a href="#" class="fs-5"><i class="bi bi-instagram"></i></a>
-                    <a href="#" class="fs-5"><i class="bi bi-twitter-x"></i></a>
+        <div class="container pt-4">
+            <div class="row g-5 justify-content-between">
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-gradient mb-4">Sri Lankan Cuisine</h4>
+                    <p class="text-secondary lh-lg mb-4">Preserving and sharing the authentic culinary traditions of Sri
+                        Lanka with the world. Join our journey of flavors.</p>
+                    <div class="d-flex gap-3 social-links">
+                        <a href="#" aria-label="Facebook"
+                            class="btn btn-outline-secondary rounded-circle btn-sm social-icon-btn"><i
+                                class="bi bi-facebook"></i></a>
+                        <a href="#" aria-label="Instagram"
+                            class="btn btn-outline-secondary rounded-circle btn-sm social-icon-btn"><i
+                                class="bi bi-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"
+                            class="btn btn-outline-secondary rounded-circle btn-sm social-icon-btn"><i
+                                class="bi bi-twitter-x"></i></a>
+                        <a href="#" aria-label="YouTube"
+                            class="btn btn-outline-secondary rounded-circle btn-sm social-icon-btn"><i
+                                class="bi bi-youtube"></i></a>
+                    </div>
                 </div>
-                <small class="text-muted d-block border-top border-secondary pt-4">&copy; 2024 Sri Lankan Cuisine. Open
-                    Source Project.</small>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4 text-accent text-uppercase tracking-wider small">Explore</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="home.html" class="text-decoration-none transition-colors">Home</a>
+                        </li>
+                        <li><a href="review.html" class="text-decoration-none transition-colors">Reviews</a>
+                        </li>
+                        <li><a href="contactus.html" class="text-decoration-none transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-4 text-accent text-uppercase tracking-wider small">Contact Us</h6>
+                    <ul class="list-unstyled text-muted d-flex flex-column gap-3">
+                        <li class="d-flex align-items-start gap-3">
+                            <i class="bi bi-envelope text-accent mt-1"></i>
+                            <span>info@srilankancuisine.com</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-3">
+                            <i class="bi bi-geo-alt text-accent mt-1"></i>
+                            <span>123 Spice Garden Rd,<br>Colombo 07, Sri Lanka</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-top border-secondary border-opacity-25 mt-5 pt-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <small class="text-muted">&copy; 2024 Sri Lankan Cuisine. All rights reserved.</small>
+                <a href="../Admin/login.html" class="small text-decoration-none text-accent transition-colors">
+                    <i class="bi bi-shield-lock me-1"></i> Admin Login
+                </a>
             </div>
         </div>
     </footer>
