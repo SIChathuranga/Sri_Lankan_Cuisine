@@ -1,0 +1,90 @@
+/**
+ * Admin Login Styles
+ * Centered login card styling
+ */
+
+body {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-card {
+    background: var(--bg-card);
+    border-radius: 16px;
+    box-shadow: var(--shadow-lg);
+    padding: 3rem;
+    width: 100%;
+    max-width: 450px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-logo {
+    font-size: 3rem;
+    color: var(--accent-primary);
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.form-floating>.form-control {
+    background: var(--bg-secondary);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.form-floating>.form-control:focus {
+    background: var(--bg-card);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+}
+
+.form-floating>label {
+    color: var(--text-secondary);
+}
+
+.btn-login {
+    background: var(--accent-primary);
+    color: white;
+    padding: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-login:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.back-link:hover {
+    color: var(--accent-primary);
+}
+
+/* Alert styling */
+.alert {
+    border-radius: 8px;
+    font-size: 0.9rem;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}

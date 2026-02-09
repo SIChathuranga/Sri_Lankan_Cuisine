@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews - Sri Lankan Cuisine</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="review.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-gradient" href="home.html">
+                    <i class="bi bi-egg-fried me-2"></i>Sri Lankan Cuisine
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Reviews</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contactus.html">Contact</a></li>
+                        <li class="nav-item ms-lg-3">
+                            <button id="darkModeToggle" class="btn btn-theme-toggle btn-sm rounded-pill">
+                                <i class="bi bi-moon-fill"></i> Dark Mode
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Header -->
+        <section class="reviews-header pt-5 mt-5">
+            <div class="container">
+                <h1 class="reviews-title animate-on-scroll">Community Reviews</h1>
+                <p class="reviews-subtitle animate-on-scroll delay-100">See what our community has to say about the
+                    flavors of Sri Lanka.</p>
+            </div>
+        </section>
+
+        <!-- Reviews List -->
+        <section class="py-5 bg-light">
+            <div class="container">
+                <div id="commentsContainer" class="comments-list">
+                    <!-- Javascript will populate comments here -->
+                </div>
+
+                <!-- Pagination -->
+                <nav class="mt-5" aria-label="Comment navigation">
+                    <ul id="pagination" class="pagination">
+                        <!-- Dynamic Pagination -->
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="py-5 text-center bg-card border-top border-light">
+            <div class="container animate-on-scroll">
+                <h3>Have you tried our recipes?</h3>
+                <p class="text-secondary mb-4">We'd love to hear your thoughts!</p>
+                <a href="home.html#commentForm" class="btn btn-primary rounded-pill px-5 shadow-sm">
+                    Leave a Review <i class="bi bi-pencil-square ms-2"></i>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-5 mt-auto">
+        <div class="container">
+            <div class="text-center">
+                <h5 class="text-gradient mb-3">Sri Lankan Cuisine</h5>
+                <p class="text-muted small mb-4">Preserving culinary traditions.</p>
+                <div class="d-flex justify-content-center gap-3 mb-4">
+                    <a href="#" class="fs-5"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="fs-5"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="fs-5"><i class="bi bi-twitter-x"></i></a>
+                </div>
+                <small class="text-muted d-block border-top border-secondary pt-4">&copy; 2024 Sri Lankan Cuisine. Open
+                    Source Project.</small>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="review.js"></script>
+</body>
+
+</html>

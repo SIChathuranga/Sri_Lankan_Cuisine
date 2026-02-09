@@ -1,0 +1,136 @@
+/**
+ * Admin Review Styles
+ * Specific styles for comment moderation interface
+ */
+
+/* Import Admin Base Styles */
+@import url('admin.css');
+
+.comment-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.comment-card:hover {
+    box-shadow: var(--shadow-sm);
+    transform: translateX(4px);
+}
+
+/* Status Indicators */
+.comment-card.status-pending {
+    border-left-color: var(--warning);
+}
+
+.comment-card.status-approved {
+    border-left-color: var(--success);
+}
+
+.comment-card.status-rejected {
+    border-left-color: var(--danger);
+    opacity: 0.7;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.comment-author {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.author-avatar {
+    width: 40px;
+    height: 40px;
+    background: var(--bg-tertiary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: var(--accent-primary);
+}
+
+.author-info h5 {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.author-info small {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+}
+
+.comment-date {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.comment-body {
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.comment-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1rem;
+}
+
+/* Filter Tabs */
+.filter-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 1rem;
+}
+
+.filter-tab {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.filter-tab:hover {
+    background: var(--bg-tertiary);
+    color: var(--accent-primary);
+}
+
+.filter-tab.active {
+    background: var(--accent-primary);
+    color: white;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 1rem;
+    color: var(--text-muted);
+}
+
+.empty-state i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+    opacity: 0.5;
+}

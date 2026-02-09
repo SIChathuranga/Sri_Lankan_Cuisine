@@ -1,0 +1,224 @@
+/**
+ * Admin Dashboard Styles
+ * Layout for sidebar, data tables, and management forms
+ */
+
+body {
+    background-color: var(--bg-secondary);
+}
+
+/* ========== SIDEBAR ========== */
+.admin-sidebar {
+    height: 100vh;
+    width: 280px;
+    background: var(--bg-card);
+    border-right: 1px solid var(--border-color);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 1.5rem;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.nav-link {
+    color: var(--text-secondary);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: all 0.2s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: var(--accent-primary);
+    color: white !important;
+}
+
+.nav-link i {
+    font-size: 1.1rem;
+}
+
+/* ========== MAIN CONTENT ========== */
+.admin-content {
+    margin-left: 280px;
+    padding: 2rem;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+/* ========== STATS CARDS ========== */
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.stat-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--bg-tertiary);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--accent-primary);
+}
+
+.stat-info h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.stat-info p {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+/* ========== DATA TABLES ========== */
+.data-table-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-top: 2rem;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+.table th {
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    padding: 1rem;
+    border-top: none;
+}
+
+.table td {
+    vertical-align: middle;
+    padding: 1rem;
+    color: var(--text-primary);
+    border-bottom-color: var(--border-color);
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-action {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: none;
+    transition: all 0.2s ease;
+}
+
+.btn-edit {
+    background: var(--bg-tertiary);
+    color: var(--info);
+}
+
+.btn-edit:hover {
+    background: var(--info);
+    color: white;
+}
+
+.btn-delete {
+    background: var(--bg-tertiary);
+    color: var(--danger);
+}
+
+.btn-delete:hover {
+    background: var(--danger);
+    color: white;
+}
+
+/* ========== FORMS & MODALS ========== */
+.image-preview {
+    width: 100%;
+    height: 200px;
+    background: var(--bg-tertiary);
+    border: 2px dashed var(--border-color);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.image-preview i {
+    font-size: 3rem;
+    color: var(--text-muted);
+}
+
+.image-preview:hover {
+    border-color: var(--accent-primary);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 992px) {
+    .admin-sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .admin-sidebar.show {
+        transform: translateX(0);
+    }
+
+    .admin-content {
+        margin-left: 0;
+    }
+
+    .mobile-nav-toggle {
+        display: block !important;
+    }
+}

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover authentic Sri Lankan cuisine, recipes, and food culture.">
+    <title>Sri Lankan Cuisine - Authentic Recipes & Food Culture</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="home.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-gradient fs-3" href="#"
+                    style="font-family: 'Playfair Display', serif;">
+                    Sri Lankan Cuisine
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center gap-3">
+                        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="review.html">Reviews</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contactus.html">Contact</a></li>
+                        <li class="nav-item">
+                            <button id="darkModeToggle"
+                                class="btn btn-theme-toggle rounded-circle d-flex align-items-center justify-content-center"
+                                style="width: 40px; height: 40px;">
+                                <i class="bi bi-moon-fill"></i>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section (Full Screen) -->
+    <section class="hero-section p-0">
+        <div id="heroCarousel" class="carousel slide carousel-fade h-100" data-bs-ride="carousel"
+            data-bs-interval="6000" data-bs-pause="false">
+            <div class="carousel-inner h-100">
+                <!-- Using active class for first item -->
+                <div class="carousel-item active h-100">
+                    <img src="src/header1.jpeg" class="d-block w-100 h-100" alt="Spices">
+                </div>
+                <!-- Additional items -->
+                <div class="carousel-item h-100"><img src="src/header2.jpeg" class="d-block w-100 h-100" alt="Curry">
+                </div>
+                <div class="carousel-item h-100"><img src="src/header3.jpeg" class="d-block w-100 h-100" alt="Rice">
+                </div>
+                <div class="carousel-item h-100"><img src="src/header4.jpeg" class="d-block w-100 h-100" alt="Sambol">
+                </div>
+                <div class="carousel-item h-100"><img src="src/header5.jpeg" class="d-block w-100 h-100" alt="Seafood">
+                </div>
+                <div class="carousel-item h-100"><img src="src/header6.jpeg" class="d-block w-100 h-100" alt="Feast">
+                </div>
+            </div>
+
+            <!-- Centered Overlay Content -->
+            <div class="hero-overlay animate-on-scroll">
+                <h1 class="hero-title text-white mb-3" style="font-family: 'Playfair Display', serif;">Taste of Paradise
+                </h1>
+                <p class="hero-text text-white mb-4">Explore the vibrant flavors, rich spices, and culinary heritage of
+                    Sri Lanka.</p>
+                <a href="#food-showcase"
+                    class="btn btn-primary btn-lg rounded-pill px-5 py-3 shadow-lg fw-bold text-uppercase tracking-wider">
+                    Discover Recipes
+                </a>
+            </div>
+
+            <!-- Indicators -->
+            <div class="carousel-indicators mb-4">
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"></button>
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="5"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Search Bar (Floating) -->
+        <!-- Removed duplicate margin logic. CSS handles the floating. -->
+        <div class="search-container shadow-lg p-1 rounded-pill">
+            <i class="bi bi-search search-icon ms-3 text-primary"></i>
+            <input type="text" id="searchInput"
+                class="form-control border-0 shadow-none bg-transparent ps-5 py-3 rounded-pill"
+                placeholder="Search for recipes, ingredients...">
+        </div>
+
+        <!-- Food Showcase -->
+        <section id="food-showcase" class="py-5">
+            <div class="text-center mb-5">
+                <span class="text-primary fw-bold text-uppercase small tracking-wider">Discover</span>
+                <h2 class="section-title mt-2 fw-bold display-5" style="font-family: 'Playfair Display', serif;">
+                    Featured Delicacies</h2>
+            </div>
+
+            <!-- Grid Container -->
+            <div id="foodGrid" class="food-grid">
+                <!-- Javascript will populate this or show skeletons -->
+                <div class="col">
+                    <div class="skeleton shadow-sm rounded-4" style="height: 400px;"></div>
+                </div>
+                <div class="col">
+                    <div class="skeleton shadow-sm rounded-4" style="height: 400px;"></div>
+                </div>
+                <div class="col">
+                    <div class="skeleton shadow-sm rounded-4" style="height: 400px;"></div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <nav class="mt-5 d-flex justify-content-center" aria-label="Page navigation">
+                <ul id="pagination" class="pagination gap-2">
+                    <!-- Dynamic Pagination -->
+                </ul>
+            </nav>
+        </section>
+
+    </main>
+
+    <!-- Comment Form Section -->
+    <section class="comment-section-wrapper py-5 bg-light">
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 animate-on-scroll">
+                    <div class="comment-card border-0 shadow-lg p-5 rounded-4 position-relative overflow-hidden">
+                        <div class="position-absolute top-0 start-0 w-100 h-1 bg-primary"></div>
+
+                        <div class="text-center mb-5">
+                            <i class="bi bi-chat-quote-fill display-4 text-primary opacity-25 mb-3"></i>
+                            <h3 class="fw-bold mb-2" style="font-family: 'Playfair Display', serif;">Share Your
+                                Experience</h3>
+                            <p class="text-muted">Tried a recipe? Let us know what you think!</p>
+                        </div>
+
+                        <form id="commentForm">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="commentName" placeholder="Your Name"
+                                            required>
+                                        <label for="commentName" class="text-muted">Your Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="commentEmail"
+                                            placeholder="name@example.com" required>
+                                        <label for="commentEmail" class="text-muted">Email Address</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Your Comment" id="commentText"
+                                            style="height: 150px" required></textarea>
+                                        <label for="commentText" class="text-muted">Your Comment</label>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-center mt-4">
+                                    <button type="submit"
+                                        class="btn btn-primary px-5 py-3 rounded-pill fw-bold shadow-sm w-100 w-md-auto">
+                                        Post Comment <i class="bi bi-send-fill ms-2"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-5 pb-3 mt-auto">
+        <div class="container pt-4">
+            <div class="row g-5 justify-content-between">
+                <div class="col-lg-4 col-md-6">
+                    <h4 class="text-gradient mb-4 font-playfair">Sri Lankan Cuisine</h4>
+                    <p class="text-secondary lh-lg mb-4">Preserving and sharing the authentic culinary traditions of Sri
+                        Lanka with the world. Join our journey of flavors.</p>
+                    <div class="d-flex gap-3 social-links">
+                        <a href="#"
+                            class="btn btn-outline-secondary rounded-circle btn-sm d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px;"><i class="bi bi-facebook"></i></a>
+                        <a href="#"
+                            class="btn btn-outline-secondary rounded-circle btn-sm d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px;"><i class="bi bi-instagram"></i></a>
+                        <a href="#"
+                            class="btn btn-outline-secondary rounded-circle btn-sm d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px;"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#"
+                            class="btn btn-outline-secondary rounded-circle btn-sm d-flex align-items-center justify-content-center"
+                            style="width: 40px; height: 40px;"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h6 class="fw-bold mb-4 text-primary text-uppercase tracking-wider small">Explore</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#"
+                                class="text-muted text-decoration-none hover-text-primary transition-colors">Home</a>
+                        </li>
+                        <li><a href="review.html"
+                                class="text-muted text-decoration-none hover-text-primary transition-colors">Reviews</a>
+                        </li>
+                        <li><a href="contactus.html"
+                                class="text-muted text-decoration-none hover-text-primary transition-colors">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h6 class="fw-bold mb-4 text-primary text-uppercase tracking-wider small">Contact Us</h6>
+                    <ul class="list-unstyled text-muted d-flex flex-column gap-3">
+                        <li class="d-flex align-items-start gap-3">
+                            <i class="bi bi-envelope text-primary mt-1"></i>
+                            <span>info@srilankancuisine.com</span>
+                        </li>
+                        <li class="d-flex align-items-start gap-3">
+                            <i class="bi bi-geo-alt text-primary mt-1"></i>
+                            <span>123 Spice Garden Rd,<br>Colombo 07, Sri Lanka</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-top border-secondary border-opacity-25 mt-5 pt-4 d-flex justify-content-between align-items-center flex-wrap gap-3">
+                <small class="text-muted">&copy; 2024 Sri Lankan Cuisine. All rights reserved.</small>
+                <a href="../Admin/login.html"
+                    class="text-muted small text-decoration-none hover-text-primary transition-colors">
+                    <i class="bi bi-shield-lock me-1"></i> Admin Login
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="home.js"></script>
+</body>
+
+</html>

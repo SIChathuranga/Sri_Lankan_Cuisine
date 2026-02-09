@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Sri Lankan Cuisine</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="contactus.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold text-gradient" href="home.html">
+                    <i class="bi bi-egg-fried me-2"></i>Sri Lankan Cuisine
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-center">
+                        <li class="nav-item"><a class="nav-link" href="home.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="review.html">Reviews</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
+                        <li class="nav-item ms-lg-3">
+                            <button id="darkModeToggle" class="btn btn-theme-toggle btn-sm rounded-pill">
+                                <i class="bi bi-moon-fill"></i> Dark Mode
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Header -->
+    <section class="contact-hero mt-5">
+        <div class="container">
+            <h1 class="section-title animate-on-scroll">Get In Touch</h1>
+            <p class="text-secondary mb-5 animate-on-scroll delay-100">Questions? Comments? We'd love to hear from you!
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="container py-5">
+        <div class="row g-5">
+            <!-- Contact Info -->
+            <div class="col-lg-5 animate-on-scroll delay-200">
+                <div class="contact-card h-100">
+                    <h3 class="mb-4 text-gradient fw-bold">Contact Information</h3>
+                    <ul class="contact-info-list">
+                        <li class="contact-info-item">
+                            <i class="bi bi-geo-alt contact-icon"></i>
+                            <div>
+                                <span class="contact-label">Our Location</span>
+                                <p>123 Spice Garden Road,<br>Colombo 07, Sri Lanka</p>
+                            </div>
+                        </li>
+                        <li class="contact-info-item">
+                            <i class="bi bi-envelope contact-icon"></i>
+                            <div>
+                                <span class="contact-label">Email Us</span>
+                                <a href="mailto:info@srilankancuisine.com"
+                                    class="text-decoration-none">info@srilankancuisine.com</a>
+                            </div>
+                        </li>
+                        <li class="contact-info-item">
+                            <i class="bi bi-telephone contact-icon"></i>
+                            <div>
+                                <span class="contact-label">Call Us</span>
+                                <a href="tel:+94112345678" class="text-decoration-none">+94 11 234 5678</a>
+                            </div>
+                        </li>
+                        <li class="contact-info-item">
+                            <i class="bi bi-clock contact-icon"></i>
+                            <div>
+                                <span class="contact-label">Opening Hours</span>
+                                <p>Mon - Fri: 9:00 AM - 6:00 PM<br>Sat: 10:00 AM - 4:00 PM</p>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="mt-5">
+                        <h5 class="mb-3">Follow Us</h5>
+                        <div class="d-flex gap-3">
+                            <a href="#" class="fs-4 text-secondary"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="fs-4 text-secondary"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="fs-4 text-secondary"><i class="bi bi-twitter-x"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="col-lg-7 animate-on-scroll delay-300">
+                <div class="contact-card h-100">
+                    <h3 class="mb-4 text-gradient fw-bold">Send us a Message</h3>
+                    <form id="contactForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="name">Your Name</label>
+                                    <input type="text" id="name" class="form-control" required placeholder="John Doe">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="form-label" for="email">Email Address</label>
+                                    <input type="email" id="email" class="form-control" required
+                                        placeholder="name@example.com">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="subject">Subject</label>
+                                    <input type="text" id="subject" class="form-control" required
+                                        placeholder="How can we help?">
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="form-label" for="message">Message</label>
+                                    <textarea id="message" class="form-control" rows="5" required
+                                        placeholder="Write your message here..."></textarea>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill fw-bold shadow-sm">
+                                    Send Message <i class="bi bi-send-fill ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="col-12 animate-on-scroll delay-200 mt-5">
+                <div class="map-container">
+                    <iframe title="Google Maps Location"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126743.58638740576!2d79.80832363128662!3d6.927078604627233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae253d10f7a7003%3A0x320b2e4d32d3838d!2sColombo!5e0!3m2!1sen!2slk!4v1707487200000!5m2!1sen!2slk"
+                        width="100%" height="450" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-5 mt-auto">
+        <div class="container text-center">
+            <h5 class="text-gradient mb-3">Sri Lankan Cuisine</h5>
+            <small class="text-secondary d-block border-top border-secondary pt-4 mt-4">&copy; 2024 Sri Lankan Cuisine.
+                All
+                rights reserved.</small>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="contactus.js"></script>
+</body>
+
+</html>

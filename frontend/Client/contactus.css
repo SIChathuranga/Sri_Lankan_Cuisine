@@ -1,0 +1,62 @@
+/**
+ * Contact Page Styles
+ * Specific styles for the contact form and layout
+ */
+
+.contact-hero {
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+    padding: 5rem 0 3rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.contact-card {
+    background: var(--bg-card);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+}
+
+.contact-info-list {
+    list-style: none;
+    padding: 0;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+}
+
+.contact-icon {
+    font-size: 1.5rem;
+    color: var(--accent-primary);
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.contact-label {
+    display: block;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.map-container {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    height: 400px;
+    border: 1px solid var(--border-color);
+}

@@ -1,0 +1,151 @@
+/**
+ * Theme System - CSS Variables and Transitions
+ * Modern dark/light mode with smooth transitions
+ */
+
+/* ========== ROOT VARIABLES ========== */
+:root {
+    /* Light Theme - Clean & Warm */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8f9fa;
+    --bg-tertiary: #eef2f6;
+    --bg-card: #ffffff;
+    --bg-overlay: rgba(255, 255, 255, 0.90);
+
+    --text-primary: #1a1c20;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --text-inverse: #ffffff;
+
+    --border-color: #e2e8f0;
+
+    --accent-primary: #ff6b35;
+    /* Vibrant Orange */
+    --accent-hover: #e85d2a;
+    --accent-light: #fff0eb;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Dark Theme - Deep & Rich */
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    /* Slate 900 */
+    --bg-secondary: #1e293b;
+    /* Slate 800 */
+    --bg-tertiary: #334155;
+    /* Slate 700 */
+    --bg-card: #1e293b;
+    --bg-overlay: rgba(15, 23, 42, 0.90);
+
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-inverse: #0f172a;
+
+    --border-color: #334155;
+
+    --accent-primary: #ff8c5a;
+    /* Softer Orange for Dark Mode */
+    --accent-hover: #ff6b35;
+
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== BASE STYLES ========== */
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ========== NAVBAR ========== */
+.navbar {
+    background-color: var(--bg-overlay) !important;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.navbar-brand {
+    color: var(--text-primary) !important;
+}
+
+.nav-link {
+    color: var(--text-secondary) !important;
+    font-weight: 500;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: var(--accent-primary) !important;
+}
+
+/* ========== CARDS ========== */
+.card,
+.comment-card,
+.food-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary);
+}
+
+/* ========== FORMS ========== */
+.form-control,
+.search-input,
+.comment-form-control {
+    background-color: var(--bg-primary) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+}
+
+.form-control::placeholder {
+    color: var(--text-muted);
+}
+
+/* ========== BUTTONS ========== */
+.btn-primary {
+    background-color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+.btn-outline-light {
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+.btn-outline-light:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border-color: var(--text-primary);
+}
+
+/* Theme Toggle Button */
+.btn-theme-toggle {
+    background-color: transparent;
+    border: none;
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-theme-toggle:hover {
+    background-color: var(--bg-tertiary);
+    color: var(--accent-primary);
+    border-color: var(--accent-primary);
+    transform: rotate(15deg);
+}
